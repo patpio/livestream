@@ -14,7 +14,10 @@ def create_app():
     from livestream.views import bp_main
     app.register_blueprint(bp_main, url_prefix='/')
 
-    from livestream.events.messages import bp_message
-    app.register_blueprint(bp_message, url_prefix='/chat')
+    from livestream.events.audience import bp_audience
+    app.register_blueprint(bp_audience, url_prefix='/livestream')
+
+    from livestream.events.commentator import bp_commentator
+    app.register_blueprint(bp_commentator, url_prefix='/commentator')
 
     return app

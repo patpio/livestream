@@ -11,3 +11,5 @@ socketio uzywa long polling
 event programming
 
 websocket -> namespaces -> rooms
+
+https://pypi.org/project/flask-swagger/

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<section>
+    <ul id="wall"></ul>
+</section>
+<script type="text/javascript" src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+<script>
+    const socket = io.connect('http://' + document.domain + ':' + location.port + '/livestream');
+    const wall = document.querySelector('#wall');
+
+    const createHTML = (msg) => {
+        const tag = document.createElement('li')
+        const tagText = document.createTextNode(msg)
+        tag.appendChild(tagText)
+
+        return tag
+    }
+
+    socket.on('connect', () => {
+        socket.emit('joined', {})
+    })
+
+    socket.on('message', (data) => {
+        wall.appendChild(createHTML(data.msg))
+    })
+
+</script>
+</body>
+</html>
