@@ -28,5 +28,3 @@ def handle_message(message):
     room = session.get('room', '')
     print(message)
     emit('message', message, namespace='/livestream', broadcast=True, room=room)
-
-# TODO do kazdej wiadomosci dodac godzine/minute, jak wpadnie bramka to ma sie pojawic emoji https://emojifinder.com/soccer
